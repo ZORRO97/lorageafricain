@@ -1,0 +1,4 @@
+services:
+#    amoussou.example:
+#        class: AmoussouBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

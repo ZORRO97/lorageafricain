@@ -1,0 +1,28 @@
+{% extends "AmoussouBundle::layout.html.twig" %}
+
+{% block title %}AmoussouBundle:Admin:festivalier{% endblock %}
+
+{% block content %}
+<h4>Autorisation Film Festival</h4>
+
+<div class="text-center" style="border: 1px solid black;padding:15px">
+	{{ form_start(form,{"method":"POST","action": path('admin.role_festivalier') ,"attr":{'class':"form-inline"}} ) }}
+	<div class="form-group">
+		
+	{{ form_widget(form.username,{'attr':
+	{'placeholder': "pseudo",'class':"form-input"}
+}) }}
+	</div>
+
+	{{ form_widget(form.grant) }}
+
+	{{ form_widget(form.fire) }}
+
+	<!-- <button type="submit" class="btn btn-primary" ><i class="fa fa-search" aria-hidden="true">Autoriser</i></button> -->
+	
+	{{ form_rest(form) }}
+	{{ form_end(form) }}
+	
+	
+</div>
+{% endblock %}

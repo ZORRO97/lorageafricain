@@ -1,0 +1,51 @@
+{% extends 'AmoussouBundle::layout.html.twig' %}
+
+{% block content %}
+
+
+<h1 class="text-center">LES UTILISATEURS</h1>
+
+<table class="table table-bordered">
+	<tr>
+		<th>Pseudo</th>
+		<th>Email</th>
+		<th>Statut</th>
+		<th>Action</th>
+	</tr>
+	{% for user in users %}
+		
+			<tr>
+				<td>
+					{{ user.username }}
+				</td>
+				<td>
+					{{ user.email }}
+				</td>
+				<td class="role">
+					{% if user.roles[0] == "ROLE_ADMIN" %}
+						Administrateur
+					{% elseif user.roles[0] == "ROLE_FESTIVALIER" %}
+						Festivalier
+					{% else %}
+						Utilisateur
+					{% endif %}
+					
+				</td>
+				<td>
+					{% if user.roles[0] == "ROLE_ADMIN" %} tous les droits
+					{% elseif user.roles[0] == "ROLE_FESTIVALIER" %}
+						<a href="{{ path("admin.finish.festivalier",{'id':user.id}) }}">Interdire</a>
+					{% else %}
+						<a href="{{ path("admin.promote.festivalier",{'id':user.id}) }}">Autoriser</a>
+					{% endif %}
+				</td>
+			</tr>
+
+		
+	{% endfor %}
+</table>
+
+
+
+
+{% endblock %}
