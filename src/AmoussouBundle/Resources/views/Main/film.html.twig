@@ -4,8 +4,19 @@
 
 
 <h1>LE FILM</h1>
-<video src="{{ asset("video/PIC_0149.MP4") }}" width='800' height='600' controls autoplay></video>
+<video id="videoElementID" src="{{ asset("video/PIC_0149.MP4") }}" width='800' height='600' controls controlsList="fullscreen nodownload noremote"></video>
 
 
 
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+	// empêche le menu contexttuel de s'afficher et d'enregistrer la vidéo facilement
+		$(document).ready(function(){
+   			$('#videoElementID').bind('contextmenu',function() { return false; });
+});
+	</script>
+    
 {% endblock %}
